@@ -9,17 +9,19 @@ const Login = () => {
         </h4>
         <h1 className="sec-title">Login</h1>
         <div className="w-full mt-8">
-          <div className="flex items-center gap-5 my-6">
+          <div className="flex flex-col md:flex-row items-center gap-5 my-6">
             <button className="flex items-center gap-4 btn capitalize">
               <img className="bg-white p-2 rounded-full" src="/g.svg" alt="" />{" "}
               login with google
             </button>
-            <button className="btn text-3xl h-16">
-              <FaFacebook />
-            </button>
-            <button className="btn text-3xl h-16">
-              <FaApple />
-            </button>
+            <div className="flex items-center gap-4">
+              <button className="btn text-3xl h-16">
+                <FaFacebook />
+              </button>
+              <button className="btn text-3xl h-16">
+                <FaApple />
+              </button>
+            </div>
           </div>
           <div className="flex items-center justify-center">
             <hr className="text-gray-300 my-8 w-1/2" />
