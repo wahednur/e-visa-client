@@ -1,10 +1,34 @@
 import { Link } from "react-router-dom";
+import { FaApple, FaFacebook } from "react-icons/fa";
 const Login = () => {
   return (
     <div className="center h-screen">
-      <div className="w-full md:w-xl border p-8 rounded-2xl bg-white drop-shadow-xl">
+      <div className="w-full md:w-xl p-8 rounded-2xl bg-white drop-shadow-xl">
+        <h4 className="title mb-4">
+          Welcome to <span className="text-primary">e.visa</span>
+        </h4>
         <h1 className="sec-title">Login</h1>
-        <div className="w-full">
+        <div className="w-full mt-8">
+          <div className="flex items-center gap-5 my-6">
+            <button className="flex items-center gap-4 btn capitalize">
+              <img className="bg-white p-2 rounded-full" src="/g.svg" alt="" />{" "}
+              login with google
+            </button>
+            <button className="btn text-3xl h-16">
+              <FaFacebook />
+            </button>
+            <button className="btn text-3xl h-16">
+              <FaApple />
+            </button>
+          </div>
+          <div className="flex items-center justify-center">
+            <hr className="text-gray-300 my-8 w-1/2" />
+            <span className=" px-3">or</span>
+            <hr className="text-gray-300 my-8 w-1/2" />
+          </div>
+          <h4 className="text-center py-3 text-lg text-primary">
+            Login with username and password
+          </h4>
           <form action="w-full">
             <div className="frm-grp-col">
               <label htmlFor="email">Email</label>
@@ -19,6 +43,12 @@ const Login = () => {
             </div>
             <button className="btn w-full">Login</button>
           </form>
+          <p className=" my-5 text-center">
+            No Account? please{" "}
+            <Link to="/register" className="text-primary hover:text-secondary">
+              Register
+            </Link>
+          </p>
         </div>
       </div>
     </div>
