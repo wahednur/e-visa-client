@@ -4,11 +4,11 @@ import Footer from "../components/footer/Footer";
 
 const RootLayout = () => {
   return (
-    <div>
+    <div className="w-full overflow-hidden">
       <div>
         <Header />
       </div>
-      <div>
+      <div className="h-screen">
         <Outlet />
       </div>
       <div>

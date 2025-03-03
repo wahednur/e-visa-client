@@ -59,3 +59,25 @@ body {
 .btn {
   @apply px-5 py-3 flex justify-center items-center bg-primary rounded-lg font-bold text-white hover:bg-secondary duration-300 transition-all font-roboto cursor-pointer;
 }
+.desk-nav-user {
+  @apply bg-white w-[300px] z-10 border border-primary rounded-lg p-4 space-y-4 absolute -right-[700px] opacity-0 top-16 duration-500;
+}
+.desk-nav-user.open {
+  @apply right-0 duration-500 opacity-100;
+}
+
+.mbl-nav-wrap {
+  @apply lg:hidden relative;
+}
+.mbl-nav-wrap .mbl-nav {
+  @apply bg-primary/70 w-[300px] rounded-lg overflow-hidden absolute top-14 -left-[500px] duration-500;
+}
+.mbl-nav-wrap .mbl-nav ul li a {
+  @apply py-4 w-full block p-4 md:p-4 text-sm;
+}
+.mbl-nav-wrap .mbl-nav ul li a.active {
+  @apply bg-secondary text-white;
+}
+.mbl-nav-wrap .mbl-nav.open {
+  @apply left-0;
+}
