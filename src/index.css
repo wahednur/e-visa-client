@@ -10,6 +10,8 @@
   --color-info: var(--info);
   --font-roboto: var(--roboto);
   --font-poppins: var(--poppins);
+
+  --aspect-slider: 1920/700;
 }
 
 :root {
