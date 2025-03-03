@@ -1,7 +1,4 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import img1 from "/img/slide1.jpg";
-import img2 from "/img/slide2.png";
-import img3 from "/img/slide3.jpg";
 import "animate.css";
 import "swiper/css";
 import "swiper/css/navigation";

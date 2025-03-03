@@ -102,3 +102,20 @@ body {
   content: "";
   @apply w-full h-full absolute top-0 left-0 -z-10 bg-gradient-to-r from-black/0 to-blue-500;
 }
+.inner-box:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 127px;
+  height: 100%;
+  background-color: var(--primary);
+  transform: skewX(-30deg);
+  transform-origin: top right;
+  transition: all 0.4s ease;
+  z-index: -2;
+}
+.inner-box:hover:before {
+  width: 180%;
+  color: #fff;
+}
