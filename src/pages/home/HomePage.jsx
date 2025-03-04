@@ -51,6 +51,13 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+      <div className="bg-[url(/img/visa-bg.jpg)] w-full bg-cover visa relative mt-12 lg:mt-20">
+        <div className="container py-10 lg:py-20">
+          <h1 className="sec-title text-center text-white w-full md:w-2/3 mx-auto leading-tight">
+            Outstanding Immigration Visa Services
+          </h1>
+        </div>
+      </div>
     </>
   );
 };

@@ -4,6 +4,7 @@ import ErrorPage from "../pages/error/ErrorPage";
 import HomePage from "../pages/home/HomePage";
 import Login from "../pages/auth/login/Login";
 import Register from "../pages/auth/register/Register";
+import AddVisa from "../pages/visa/AddVisa";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/add-visa",
+        element: <AddVisa />,
       },
     ],
   },
