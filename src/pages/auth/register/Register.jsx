@@ -4,8 +4,9 @@ import useAuth from "../../../hooks/useAuth";
 import { apiUrl } from "../../../hooks/useApiUrl";
 import { toast } from "sonner";
 import { useState } from "react";
+
 const Register = () => {
-  const { userRegister, updateUser, setUser } = useAuth();
+  const { userRegister, updateUser, setUser, googleLogin } = useAuth();
   const [errors, setErrors] = useState("");
   const navigate = useNavigate();
   const handleRegister = async (e) => {
@@ -54,6 +55,31 @@ const Register = () => {
       toast.error(err.message);
     }
   };
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await googleLogin();
+      setUser(result?.user);
+      console.log(result);
+      const newUser = {
+        name: result?.user?.displayName,
+        photo: result?.user?.photoURL,
+        email: result?.user?.email,
+      };
+      const res = await fetch(`${apiUrl}/create-user`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      });
+
+      const data = await res.json();
+      toast.success(`${newUser.email} Login successfully`);
+      console.log(data.message);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
 
   return (
     <div className="center h-screen">
@@ -64,7 +90,10 @@ const Register = () => {
         <h1 className="sec-title">Register now</h1>
         <div className="w-full mt-8">
           <div className="flex flex-col md:flex-row items-center gap-5 my-6">
-            <button className="flex items-center gap-4 btn capitalize">
+            <button
+              onClick={handleGoogleLogin}
+              className="flex items-center gap-4 btn capitalize"
+            >
               <img className="bg-white p-2 rounded-full" src="/g.svg" alt="" />{" "}
               sign up with google
             </button>
