@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
+import { apiUrl } from "../../hooks/useApiUrl";
+import { toast } from "sonner";
 const visaRequirements = {
   "Student Visa": [
     "Valid passport",
@@ -51,25 +53,62 @@ const AddVisa = () => {
   const [selectedDocuments, setSelectedDocuments] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
   console.log(selectedDocuments);
-  const handleVisaChange = (event) => {
-    setSelectedVisa(event.target.value);
+  const handleVisaChange = (e) => {
+    setSelectedVisa(e.target.value);
     setSelectedDocuments([]); // Reset selected documents
   };
 
-  const handleDocumentChange = (event) => {
-    const { value, checked } = event.target;
+  const handleDocumentChange = (e) => {
+    const { value, checked } = e.target;
     if (checked) {
       setSelectedDocuments([...selectedDocuments, value]);
     } else {
       setSelectedDocuments(selectedDocuments.filter((doc) => doc !== value));
     }
   };
-
+  const handleAddVisa = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const countryName = form.countryName.value;
+    const countryImg = form.countryImg.value;
+    const visaType = selectedVisa;
+    const requirementDoc = selectedDocuments;
+    const processingTime = form.processingTime.value;
+    const description = form.description.value;
+    const ageRestriction = form.ageRestriction.value;
+    const validity = startDate;
+    const applicationMethod = form.applicationMethod.value;
+    const addVisa = {
+      countryName,
+      countryImg,
+      visaType,
+      requirementDoc,
+      processingTime,
+      description,
+      ageRestriction,
+      validity,
+      applicationMethod,
+    };
+    console.table(addVisa);
+    try {
+      await fetch(`${apiUrl}/add-visa`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(addVisa),
+      });
+      toast.success(`${visaType} added successfully`);
+      form.reset();
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="container mt-10">
       <div className="bg-white w-full md:w-3/4 mx-auto rounded-xl p-10">
         <h1 className="sec-title text-center">Add visa</h1>
-        <form className="mt-10">
+        <form onSubmit={handleAddVisa} className="mt-10">
           <div className="frm-grp-col">
             <label htmlFor="countryName">Country Name</label>
             <input type="text" name="countryName" className="frm-ctr" />
