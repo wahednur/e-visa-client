@@ -75,7 +75,10 @@ body {
   @apply lg:hidden relative;
 }
 .mbl-nav-wrap .mbl-nav {
-  @apply bg-primary/70 w-[300px] rounded-lg overflow-hidden absolute top-14 -left-[500px] duration-500;
+  @apply bg-white w-[300px] rounded-lg overflow-hidden absolute top-14 -left-[500px] duration-500;
+}
+.mbl-nav-wrap .mbl-nav.open {
+  @apply left-0;
 }
 .mbl-nav-wrap .mbl-nav ul li a {
   @apply py-4 w-full block p-4 md:p-4 text-sm;

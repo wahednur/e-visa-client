@@ -6,7 +6,8 @@ import { toast } from "sonner";
 import { useState } from "react";
 
 const Register = () => {
-  const { userRegister, updateUser, setUser, googleLogin } = useAuth();
+  const { userRegister, updateUser, setUser, googleLogin, user, loading } =
+    useAuth();
   const [errors, setErrors] = useState("");
   const navigate = useNavigate();
   const handleRegister = async (e) => {
@@ -76,11 +77,13 @@ const Register = () => {
       const data = await res.json();
       toast.success(`${newUser.email} Login successfully`);
       console.log(data.message);
+      navigate(location?.state ? location.pathname : "/");
     } catch (err) {
       console.log(err.message);
     }
   };
-
+  if (loading) return null;
+  if (user?.email) return navigate("/");
   return (
     <div className="center h-screen">
       <div className="w-full md:w-xl p-8 rounded-2xl bg-white drop-shadow-xl">
