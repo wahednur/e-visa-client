@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaBars } from "react-icons/fa6";
+import useAuth from "../../../hooks/useAuth";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const { user } = useAuth();
 
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
@@ -67,7 +69,12 @@ const Navbar = () => {
                 className="cursor-pointer"
                 onClick={() => setOpen(!open)}
               >
-                <img className="w-12" src="/favicon.svg" alt="" />
+                <img
+                  className="w-12 h-12 rounded-full"
+                  src={user?.photoURL ? `${user?.photoURL}` : "/favicon.svg"}
+                  alt=""
+                  referrerPolicy="no-referrer"
+                />
               </button>
               <div
                 ref={menuRef}
@@ -75,11 +82,22 @@ const Navbar = () => {
               >
                 <div className="flex flex-col space-y-3 p-5">
                   <div className="flex items-center gap-3">
-                    <img src="/favicon.svg" className="w-12" alt="Name" />
+                    <img
+                      className="w-12 h-12 rounded-full"
+                      src={
+                        user?.photoURL ? `${user?.photoURL}` : "/favicon.svg"
+                      }
+                      alt=""
+                      referrerPolicy="no-referrer"
+                    />
                     <div className="flex flex-col justify-center">
-                      <p>Abdul Wahed Nur</p>
+                      <p>
+                        {user?.displayName
+                          ? user?.displayName
+                          : "No name set yet"}
+                      </p>
                       <small className="text-gray-500">
-                        wahednur@gmail.com
+                        {user?.email ? user?.email : "No user email"}
                       </small>
                     </div>
                   </div>
