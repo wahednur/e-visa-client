@@ -35,6 +35,13 @@ const Navbar = () => {
       </li>
     </>
   );
+  const userNavItems = (
+    <>
+      <Link to="/add-visa">Add Visa</Link>
+      <Link to="/visa-list">My Added Visas</Link>
+      <Link to="/my-visa">My Application Visa</Link>
+    </>
+  );
   // setOpen(false) outside click
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -109,10 +116,7 @@ const Navbar = () => {
                     </div>
                   </div>
                   <hr className="text-gray-200" />
-                  <div className="flex flex-col space-y-3">
-                    <Link to="/add-visa">Add Visa</Link>
-                    <Link to="/my-visa">My Application Visa</Link>
-                  </div>
+                  <div className="flex flex-col space-y-3">{userNavItems}</div>
                   <hr className="text-gray-200 mb-6" />
                   {user?.email ? (
                     <button onClick={handleLogout} className="btn">

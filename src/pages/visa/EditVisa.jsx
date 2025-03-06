@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import DatePicker from "react-datepicker";
-import { apiUrl } from "../../hooks/useApiUrl";
-import { toast } from "sonner";
+import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import { toast } from "sonner";
+import { apiUrl } from "../../hooks/useApiUrl";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import DatePicker from "react-datepicker";
+
 const visaRequirements = {
   "Student Visa": [
     "Valid passport",
@@ -49,17 +51,18 @@ const visaRequirements = {
     "Medical Test Reports",
   ],
 };
-const AddVisa = () => {
+const EditVisa = () => {
   const { user } = useAuth();
   const [selectedVisa, setSelectedVisa] = useState("");
   const [selectedDocuments, setSelectedDocuments] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
-
+  const getVisaData = useLoaderData();
+  const navigate = useNavigate();
   const handleVisaChange = (e) => {
     setSelectedVisa(e.target.value);
     setSelectedDocuments([]); // Reset selected documents
   };
-
+  console.log(getVisaData);
   const handleDocumentChange = (e) => {
     const { value, checked } = e.target;
     if (checked) {
@@ -68,7 +71,7 @@ const AddVisa = () => {
       setSelectedDocuments(selectedDocuments.filter((doc) => doc !== value));
     }
   };
-  const handleAddVisa = async (e) => {
+  const handleEditVisa = async (e) => {
     e.preventDefault();
     const form = e.target;
     const countryName = form.countryName.value;
@@ -97,17 +100,18 @@ const AddVisa = () => {
         name: user?.displayName,
       },
     };
-    console.table(addVisa);
+
     try {
-      await fetch(`${apiUrl}/add-visa`, {
-        method: "POST",
+      await fetch(`${apiUrl}/vias/update/${getVisaData?._id}`, {
+        method: "PATCH",
         headers: {
           "content-type": "application/json",
         },
         body: JSON.stringify(addVisa),
       });
-      toast.success(`${visaType} added successfully`);
+      toast.success(`${visaType} Update successfully`);
       form.reset();
+      navigate("/visa-list");
     } catch (err) {
       console.log(err);
     }
@@ -116,14 +120,24 @@ const AddVisa = () => {
     <div className="container mt-10">
       <div className="bg-white w-full md:w-3/4 mx-auto rounded-xl p-10">
         <h1 className="sec-title text-center">Add visa</h1>
-        <form onSubmit={handleAddVisa} className="mt-10">
+        <form onSubmit={handleEditVisa} className="mt-10">
           <div className="frm-grp-col">
             <label htmlFor="countryName">Country Name</label>
-            <input type="text" name="countryName" className="frm-ctr" />
+            <input
+              type="text"
+              name="countryName"
+              className="frm-ctr"
+              defaultValue={getVisaData.countryName}
+            />
           </div>
           <div className="frm-grp-col">
             <label htmlFor="countryImg">Country Image</label>
-            <input type="text" name="countryImg" className="frm-ctr" />
+            <input
+              type="text"
+              name="countryImg"
+              className="frm-ctr"
+              defaultValue={getVisaData.countryImg}
+            />
           </div>
           <div className="frm-grp-col">
             <label htmlFor="countryImg">Visa Type</label>
@@ -133,7 +147,10 @@ const AddVisa = () => {
               value={selectedVisa}
               onChange={handleVisaChange}
             >
-              <option value="">Select Visa Type</option>
+              <option value={getVisaData.visaType}>
+                {getVisaData.visaType}
+              </option>
+
               {Object.keys(visaRequirements).map((visa) => (
                 <option key={visa} value={visa}>
                   {visa}
@@ -143,7 +160,12 @@ const AddVisa = () => {
           </div>
           <div className="frm-grp-col">
             <label htmlFor="processingTime">Processing Time</label>
-            <input type="text" name="processingTime" className="frm-ctr" />
+            <input
+              type="text"
+              name="processingTime"
+              className="frm-ctr"
+              defaultValue={getVisaData.processingTime}
+            />
           </div>
 
           <div className="flex flex-col md:flex-row">
@@ -176,21 +198,32 @@ const AddVisa = () => {
               name="description"
               className="frm-ctr"
               rows={5}
+              defaultValue={getVisaData.description}
             ></textarea>
           </div>
           <div className="flex flex-col gap-6 md:flex-row">
             <div className="frm-grp-col w-full md:w-1/3">
               <label htmlFor="ageRestriction">Age Requirement</label>
-              <input type="text" name="ageRestriction" className="frm-ctr" />
+              <input
+                type="text"
+                name="ageRestriction"
+                className="frm-ctr"
+                defaultValue={getVisaData.ageRestriction}
+              />
             </div>
             <div className="frm-grp-col w-full md:w-1/3">
               <label htmlFor="fee">Fee</label>
-              <input type="number" name="fee" className="frm-ctr" />
+              <input
+                type="number"
+                name="fee"
+                className="frm-ctr"
+                defaultValue={getVisaData?.fee}
+              />
             </div>
             <div className="frm-grp-col w-full md:w-1/3">
               <label htmlFor="validity">Validity Date</label>
               <DatePicker
-                selected={startDate}
+                selected={getVisaData?.validity}
                 onChange={(date) => setStartDate(date)}
                 className="frm-ctr"
               />
@@ -202,6 +235,7 @@ const AddVisa = () => {
               name="applicationMethod"
               className="frm-ctr"
               rows={5}
+              defaultValue={getVisaData?.applicationMethod}
             ></textarea>
           </div>
           <button className="btn w-full">Add Visa</button>
@@ -211,4 +245,4 @@ const AddVisa = () => {
   );
 };
 
-export default AddVisa;
+export default EditVisa;

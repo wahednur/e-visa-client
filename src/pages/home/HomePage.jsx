@@ -2,7 +2,20 @@ import Slider from "../../components/slider/Slider";
 import { PiAirplaneTilt } from "react-icons/pi";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { BsPassport } from "react-icons/bs";
+import { useEffect, useState } from "react";
+import { apiUrl } from "../../hooks/useApiUrl";
+import axios from "axios";
+import VisaCard from "../visa/VisaCard";
 const HomePage = () => {
+  const [visas, setVisas] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      const { data } = await axios.get(`${apiUrl}/visas`);
+      setVisas(data);
+    };
+    getData();
+  }, []);
   return (
     <>
       <div>
@@ -54,8 +67,16 @@ const HomePage = () => {
       <div className="bg-[url(/img/visa-bg.jpg)] w-full bg-cover visa relative mt-12 lg:mt-20">
         <div className="container py-10 lg:py-20">
           <h1 className="sec-title text-center text-white w-full md:w-2/3 mx-auto leading-tight">
-            Outstanding Immigration Visa Services
+            Latest visa
           </h1>
+          <h4 className="title text-white text-center">
+            Outstanding Immigration Visa Services
+          </h4>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+            {visas.slice(0, 6).map((visa) => (
+              <VisaCard key={visa._id} visa={visa} />
+            ))}
+          </div>
         </div>
       </div>
     </>

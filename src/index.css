@@ -12,6 +12,8 @@
   --font-poppins: var(--poppins);
 
   --aspect-slider: 1920/700;
+  --aspect-bread: 1920/300;
+  --aspect-card: 4/3;
 }
 
 :root {
@@ -130,4 +132,12 @@ body {
   @apply absolute w-full h-full;
   z-index: -1;
   background: rgba(4, 17, 17, 0.815);
+}
+.all-visa {
+  z-index: 0;
+}
+.all-visa::after {
+  content: "";
+  @apply w-full h-full absolute bg-gradient-to-r from-primary left-0 top-0;
+  z-index: -1;
 }

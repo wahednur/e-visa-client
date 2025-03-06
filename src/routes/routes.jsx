@@ -6,6 +6,10 @@ import Login from "../pages/auth/login/Login";
 import Register from "../pages/auth/register/Register";
 import AddVisa from "../pages/visa/AddVisa";
 import PrivateRoutes from "./PrivateRoutes";
+import AllVisa from "../pages/visa/AllVisa";
+import MyAddedVisa from "../pages/visa/MyAddedVisa";
+import EditVisa from "../pages/visa/EditVisa";
+import { apiUrl } from "../hooks/useApiUrl";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,6 +35,27 @@ const router = createBrowserRouter([
             <AddVisa />
           </PrivateRoutes>
         ),
+      },
+      {
+        path: "/all-visa",
+        element: <AllVisa />,
+      },
+      {
+        path: "visa-list",
+        element: (
+          <PrivateRoutes>
+            <MyAddedVisa />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/edit-visa/:id",
+        element: (
+          <PrivateRoutes>
+            <EditVisa />
+          </PrivateRoutes>
+        ),
+        loader: ({ params }) => fetch(`${apiUrl}/visas/${params.id}`),
       },
     ],
   },
