@@ -25,14 +25,15 @@ const Navbar = () => {
         <NavLink to="/add-visa">Add Visa</NavLink>
       </li>
       <li>
-        <NavLink to="/my-visa">My Application Visa</NavLink>
+        <NavLink to="/applied-visa">My Application Visa</NavLink>
       </li>
-      <li>
-        <NavLink to="/login">Login</NavLink>
-      </li>
-      <li>
-        <NavLink to="/register">Register</NavLink>
-      </li>
+      {user?.email ? (
+        ""
+      ) : (
+        <li>
+          <NavLink to="/login">Login</NavLink>
+        </li>
+      )}
     </>
   );
   const userNavItems = (

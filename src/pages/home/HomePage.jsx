@@ -8,6 +8,7 @@ import axios from "axios";
 import VisaCard from "../visa/VisaCard";
 import { MdOutlineDoubleArrow } from "react-icons/md";
 import { FaArrowCircleRight } from "react-icons/fa";
+import SplashScreen from "../../components/lottie/SplashScreen";
 const HomePage = () => {
   const [visas, setVisas] = useState([]);
 
@@ -20,6 +21,7 @@ const HomePage = () => {
   }, []);
   return (
     <>
+      <SplashScreen />
       <div>
         <Slider />
         <div className="container relative z-20 md:-mt-10">

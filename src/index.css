@@ -144,3 +144,15 @@ body {
 .apply-modal {
   @apply fixed w-full h-svh bg-black/60 top-0 left-0 justify-center items-center;
 }
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  z-index: 9999;
+}
