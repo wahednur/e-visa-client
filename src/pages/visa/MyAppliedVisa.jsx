@@ -9,6 +9,7 @@ import { toast } from "sonner";
 const MyAppliedVisa = () => {
   const { user } = useAuth();
   const [visas, setVisas] = useState([]);
+  const [search, setSearch] = useState("");
 
   const handleDelete = async (id) => {
     await axios.delete(`${apiUrl}/applied-visa/${id}`);
@@ -25,7 +26,9 @@ const MyAppliedVisa = () => {
     );
     setVisas(data);
   };
-
+  const filteredVisas = visas.filter((visa) =>
+    visa.appliedCountry.toLowerCase().includes(search.toLowerCase())
+  );
   return (
     <div>
       <div className="bg-[url(/img/visabg.jpg)] w-full aspect-bread bg-center bg-cover all-visa relative">
@@ -34,6 +37,15 @@ const MyAppliedVisa = () => {
         </div>
       </div>
       <div className="container">
+        <div className="mt-10 mb-5">
+          <input
+            type="text"
+            className="px-4 py-2 border border-gray-300 rounded-md"
+            placeholder="Search by Country Name"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
         {visas.length <= 0 ? (
           <div className="w-full mt-20 justify-center items-center flex flex-col">
             <h1 className="title">No applied</h1>
@@ -69,7 +81,7 @@ const MyAppliedVisa = () => {
             </thead>
 
             <tbody className="divide-y divide-gray-200">
-              {visas.map((visa) => (
+              {filteredVisas.map((visa) => (
                 <tr key={visa._id}>
                   <td className="px-4 py-2 font-medium whitespace-nowrap text-gray-900">
                     {visa.appliedVisa}
