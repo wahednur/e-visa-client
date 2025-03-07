@@ -10,6 +10,7 @@ import AllVisa from "../pages/visa/AllVisa";
 import MyAddedVisa from "../pages/visa/MyAddedVisa";
 import EditVisa from "../pages/visa/EditVisa";
 import { apiUrl } from "../hooks/useApiUrl";
+import VisaDetails from "../pages/visa/VisaDetails";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -53,6 +54,15 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoutes>
             <EditVisa />
+          </PrivateRoutes>
+        ),
+        loader: ({ params }) => fetch(`${apiUrl}/visas/${params.id}`),
+      },
+      {
+        path: "/visas/:id",
+        element: (
+          <PrivateRoutes>
+            <VisaDetails />
           </PrivateRoutes>
         ),
         loader: ({ params }) => fetch(`${apiUrl}/visas/${params.id}`),

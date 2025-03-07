@@ -141,3 +141,6 @@ body {
   @apply w-full h-full absolute bg-gradient-to-r from-primary left-0 top-0;
   z-index: -1;
 }
+.apply-modal {
+  @apply fixed w-full h-svh bg-black/60 top-0 left-0 justify-center items-center;
+}
