@@ -129,7 +129,7 @@ const HomePage = () => {
                 <FaArrowCircleRight className="text-primary text-2xl" />
                 <span>Our operations around the world and across</span>
               </p>
-              <div>
+              <div className="mt-10">
                 <button className="btn">Read more</button>
               </div>
             </div>
