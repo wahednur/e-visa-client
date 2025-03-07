@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-
+import { Link } from "react-router-dom";
 const VisaCard = ({ visa }) => {
   return (
     <div className="bg-white p-5 rounded-2xl drop-shadow-md space-y-4">
@@ -14,8 +14,22 @@ const VisaCard = ({ visa }) => {
         </h4>
       </div>
       <div className="flex items-center justify-between">
-        <p>Country: {visa?.countryName}</p>{" "}
-        <p>Fee: {visa?.fee ? visa?.fee : "free"}</p>
+        <p>
+          Country: <span className="font-bold">{visa?.countryName}</span>
+        </p>{" "}
+        <p>
+          Fee:{" "}
+          <span className="font-bold">$ {visa?.fee ? visa?.fee : "free"}</span>{" "}
+        </p>
+      </div>
+      <p>
+        Processing Time:{" "}
+        <span className="font-bold">{visa.processingTime}</span>
+      </p>
+      <div className="inline-flex">
+        <Link to={`/visas/${visa._id}`} className="btn">
+          See Details
+        </Link>
       </div>
     </div>
   );

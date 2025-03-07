@@ -4,7 +4,7 @@ import { FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <div className="bg-primary bg-[url(/img/pattern.png)] bg-cover bg-no-repeat text-white">
+    <div className="bg-primary bg-[url(/img/pattern.png)] bg-cover bg-no-repeat text-white mt-10 md:mt-16 lg:mt-20">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-10 md:py-16 lg:py-20">
           <div className="space-y-5">
