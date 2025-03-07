@@ -1,11 +1,13 @@
 import Slider from "../../components/slider/Slider";
 import { PiAirplaneTilt } from "react-icons/pi";
 import { IoDocumentTextOutline } from "react-icons/io5";
-import { BsPassport } from "react-icons/bs";
+import { BsAirplane, BsPassport } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { apiUrl } from "../../hooks/useApiUrl";
 import axios from "axios";
 import VisaCard from "../visa/VisaCard";
+import { MdOutlineDoubleArrow } from "react-icons/md";
+import { FaArrowCircleRight } from "react-icons/fa";
 const HomePage = () => {
   const [visas, setVisas] = useState([]);
 
@@ -76,6 +78,61 @@ const HomePage = () => {
             {visas.slice(0, 6).map((visa) => (
               <VisaCard key={visa._id} visa={visa} />
             ))}
+          </div>
+        </div>
+      </div>
+      <div className="container my-10 md:my-16 lg:my-20">
+        <div className="flex flex-col md:flex-row gap-10">
+          <div className="w-full md:w-5/12">
+            <img src="/img/about1-1h.jpg" alt="" />
+          </div>
+          <div className="w-full md:w-7/12">
+            <div className="inline-flex relative">
+              <MdOutlineDoubleArrow className="absolute left-1/2 -translate-x-1/2 text-3xl -top-4 text-primary" />
+              <span className="py-3 px-6 border border-primary font-black text-xl uppercase">
+                Who we are
+              </span>
+            </div>
+            <h4 className="sec-title leading-tight my-4">
+              Best Immigration & Visa Consultation.
+            </h4>
+            <p className="text-text">
+              There are many variations of passages of but the majority have in
+              some form, by injected humou or words which don't look even
+              slightly believable of but the majority have suffered majority
+              have in some variations of passages
+            </p>
+            <div className="flex items-center gap-6 mt-10">
+              <div className="flex items-center gap-4 w-1/2">
+                <div className="border-2 p-3 rounded-full border-dashed border-primary text-primary">
+                  <BsAirplane className="text-6xl" />
+                </div>
+                <p className="text-xl font-bold w-7/12">
+                  Expertise visa Processing
+                </p>
+              </div>
+              <div className="flex items-center gap-4 w-1/2">
+                <div className="border-2 p-3 rounded-full border-dashed border-primary text-primary">
+                  <BsPassport className="text-6xl" />
+                </div>
+                <p className="text-xl font-bold w-7/12">
+                  Fastest Working Process
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-col mt-10">
+              <p className="flex items-center gap-2 font-bold text-lg">
+                <FaArrowCircleRight className="text-primary text-2xl" />
+                <span>We strongly support best practice</span>
+              </p>
+              <p className="flex items-center gap-2 font-bold text-lg">
+                <FaArrowCircleRight className="text-primary text-2xl" />
+                <span>Our operations around the world and across</span>
+              </p>
+              <div>
+                <button className="btn">Read more</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

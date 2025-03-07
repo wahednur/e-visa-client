@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "@flaticon/flaticon-uicons/css/all/all.css";
 import { apiUrl } from "../../hooks/useApiUrl";
 import axios from "axios";
 import VisaCard from "./VisaCard";
