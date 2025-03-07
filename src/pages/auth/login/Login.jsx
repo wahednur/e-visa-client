@@ -91,7 +91,7 @@ const Login = () => {
             <div className="frm-grp-col">
               <div className="flex justify-between">
                 <label htmlFor="password">Password</label>
-                <Link to="forgot-pass">Forgot password</Link>
+                <Link to="/forgot-pass">Forgot password</Link>
               </div>
               <input type="password" name="password" className="frm-ctr" />
             </div>

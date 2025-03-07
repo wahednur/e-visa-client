@@ -12,6 +12,7 @@ import EditVisa from "../pages/visa/EditVisa";
 import { apiUrl } from "../hooks/useApiUrl";
 import VisaDetails from "../pages/visa/VisaDetails";
 import MyAppliedVisa from "../pages/visa/MyAppliedVisa";
+import ForgotPass from "../pages/auth/ForgotPass";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/forgot-pass",
+        element: <ForgotPass />,
       },
       {
         path: "/add-visa",
