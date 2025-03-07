@@ -9,6 +9,8 @@ import VisaCard from "../visa/VisaCard";
 import { MdOutlineDoubleArrow } from "react-icons/md";
 import { FaArrowCircleRight } from "react-icons/fa";
 import SplashScreen from "../../components/lottie/SplashScreen";
+import { Typewriter } from "react-simple-typewriter";
+
 const HomePage = () => {
   const [visas, setVisas] = useState([]);
 
@@ -96,7 +98,18 @@ const HomePage = () => {
               </span>
             </div>
             <h4 className="sec-title leading-tight my-4">
-              Best Immigration & Visa Consultation.
+              Best Immigration &
+              <span style={{ color: "#1e88e5", fontWeight: "bold" }}>
+                <Typewriter
+                  words={["Visa Consultation.", "Visa processing"]}
+                  loop={5}
+                  cursor
+                  cursorStyle="I"
+                  typeSpeed={70}
+                  deleteSpeed={50}
+                  delaySpeed={1000}
+                />
+              </span>
             </h4>
             <p className="text-text">
               There are many variations of passages of but the majority have in
