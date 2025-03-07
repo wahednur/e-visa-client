@@ -31,6 +31,7 @@ const VisaDetails = () => {
       appliedCountry: visa?.countryName,
       date,
       fee,
+      validity: visa?.validity,
     };
     try {
       const res = await axios.post(`${apiUrl}/visas/apply`, applyVisa);

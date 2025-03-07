@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { apiUrl } from "../../hooks/useApiUrl";
 import useAuth from "../../hooks/useAuth";
-import { FaRegEdit, FaRegEye, FaRegTrashAlt } from "react-icons/fa";
+import { FaRegTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 
@@ -59,6 +59,9 @@ const MyAppliedVisa = () => {
                   Applied date
                 </th>
                 <th className="px-4 py-2 font-medium whitespace-nowrap text-gray-900">
+                  Validity date
+                </th>
+                <th className="px-4 py-2 font-medium whitespace-nowrap text-gray-900">
                   Fee
                 </th>
                 <th className="px-4 py-2">Actions</th>
@@ -81,19 +84,13 @@ const MyAppliedVisa = () => {
                     {new Date(visa?.date).toLocaleDateString()}
                   </td>
                   <td className="px-4 py-2 whitespace-nowrap text-gray-700">
+                    {new Date(visa?.validity).toLocaleDateString()}
+                  </td>
+                  <td className="px-4 py-2 whitespace-nowrap text-gray-700">
                     ${visa?.fee}
                   </td>
                   <td className="px-4 py-2 whitespace-nowrap">
                     <div className="flex gap-2 items-center">
-                      <button className="btn">
-                        <FaRegEye />
-                      </button>
-                      <Link
-                        to={`/edit-visa/${visa._id}`}
-                        className="bg-green-500 px-5 py-3 rounded-md text-white hover:bg-secondary duration-300"
-                      >
-                        <FaRegEdit />
-                      </Link>
                       <button
                         onClick={() => handleDelete(visa?._id)}
                         className="bg-red-500 px-5 py-3 rounded-md text-white hover:bg-secondary duration-300"
