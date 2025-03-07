@@ -39,7 +39,7 @@ const Navbar = () => {
     <>
       <Link to="/add-visa">Add Visa</Link>
       <Link to="/visa-list">My Added Visas</Link>
-      <Link to="/my-visa">My Application Visa</Link>
+      <Link to="/applied-visa">My Application Visa</Link>
     </>
   );
   // setOpen(false) outside click

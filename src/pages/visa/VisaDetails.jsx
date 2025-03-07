@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { IoDocumentTextOutline } from "react-icons/io5";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import DatePicker from "react-datepicker";
 import { FaXmark } from "react-icons/fa6";
@@ -13,6 +13,7 @@ const VisaDetails = () => {
   const [open, setOpen] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
   const visa = useLoaderData();
+  const navigate = useNavigate();
   const handleApply = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -24,7 +25,10 @@ const VisaDetails = () => {
       visaId: visa?._id,
       firstName,
       lastName,
+      processingTime: visa?.processingTime,
       email: user?.email,
+      appliedVisa: visa?.visaType,
+      appliedCountry: visa?.countryName,
       date,
       fee,
     };
@@ -39,6 +43,7 @@ const VisaDetails = () => {
       }
       console.log(applyVisa);
       setOpen(false);
+      navigate("/applied-visa");
     } catch (err) {
       console.log(err);
       toast.error(err.message);

@@ -11,6 +11,7 @@ import MyAddedVisa from "../pages/visa/MyAddedVisa";
 import EditVisa from "../pages/visa/EditVisa";
 import { apiUrl } from "../hooks/useApiUrl";
 import VisaDetails from "../pages/visa/VisaDetails";
+import MyAppliedVisa from "../pages/visa/MyAppliedVisa";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -66,6 +67,14 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) => fetch(`${apiUrl}/visas/${params.id}`),
+      },
+      {
+        path: "applied-visa",
+        element: (
+          <PrivateRoutes>
+            <MyAppliedVisa />
+          </PrivateRoutes>
+        ),
       },
     ],
   },
