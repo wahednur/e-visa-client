@@ -65,7 +65,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="desk-nav hidden lg:block bg-white shadow-md">
+      <div className="desk-nav hidden lg:block bg-white shadow-md ">
         <div className="container">
           <nav className="flex justify-between items-center py-3">
             <div className="flex items-center gap-6">
@@ -76,7 +76,7 @@ const Navbar = () => {
                 <ul className="flex items-center">{navLinks}</ul>
               </div>
             </div>
-            <div className="relative flex items-center">
+            <div className="relative flex items-center gap-2">
               <Theme />
               <button
                 ref={buttonRef}
