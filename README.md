@@ -1,12 +1,83 @@
-# React + Vite
+# E-Visa Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Project Cover](public/cover.jpg)
 
-Currently, two official plugins are available:
+## Live Links
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Client Live Site:** [E-Visa Client](https://evisa-ws.netlify.app/)
+- **Server Live Site:** [E-Visa Server](https://evisa-server-eta.vercel.app/)
 
-## Expanding the ESLint configuration
+## GitHub Repositories
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Client Repository:** [GitHub - e-visa-client](https://github.com/wahednur/e-visa-client)
+- **Server Repository:** [GitHub - e-visa-server](https://github.com/wahednur/e-visa-server)
+
+## Project Overview
+
+The **E-Visa Application** is a web-based platform that allows users to apply for different types of visas seamlessly. It provides a user-friendly interface for entering visa-related details and managing visa applications efficiently.
+
+## Features
+
+- Dynamic Visa Type Selection
+- Auto-fill Required Documents Based on Visa Type
+- Secure Authentication
+- Visa Application Tracking
+- Responsive UI with Tailwind CSS
+- Backend API with Express & MongoDB
+
+## Technologies Used
+
+### Frontend:
+
+- React.js
+- Tailwind CSS
+- React Router
+- Axios
+
+### Backend:
+
+- Node.js
+- Express.js
+- MongoDB
+
+## Installation & Setup
+
+### Clone the repositories:
+
+```bash
+# Clone Client
+git clone https://github.com/wahednur/e-visa-client.git
+
+# Clone Server
+git clone https://github.com/wahednur/e-visa-server.git
+```
+
+### Install dependencies:
+
+```bash
+# Client
+cd e-visa-client
+npm install
+
+# Server
+cd e-visa-server
+npm install
+```
+
+### Run the project:
+
+```bash
+# Start Client
+npm run dev
+
+# Start Server
+npm run start
+```
+
+## Contribution
+
+If you want to contribute to this project, feel free to fork the repository and submit a pull request.
+
+## License
+
+This project is **MIT Licensed**.
