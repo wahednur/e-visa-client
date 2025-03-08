@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { apiUrl } from "../../hooks/useApiUrl";
 import axios from "axios";
 import VisaCard from "./VisaCard";
+import { Helmet } from "react-helmet-async";
 const AllVisa = () => {
   const [visas, setVisas] = useState([]);
   const [visaType, setVisaType] = useState("");
@@ -20,6 +21,9 @@ const AllVisa = () => {
     : visas;
   return (
     <>
+      <Helmet>
+        <title>Visas</title>
+      </Helmet>
       <div className="bg-[url('/img/all-visa.jpg')] w-full aspect-bread bg-cover bg-center all-visa flex items-center justify-center relative">
         <h1 className="sec-title text-white">Visas</h1>
       </div>

@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
+import { Helmet } from "react-helmet-async";
 
 const MyAppliedVisa = () => {
   const { user } = useAuth();
@@ -31,6 +32,9 @@ const MyAppliedVisa = () => {
   );
   return (
     <div>
+      <Helmet>
+        <title>My Applied Visa</title>
+      </Helmet>
       <div className="bg-[url(/img/visabg.jpg)] w-full aspect-bread bg-center bg-cover all-visa relative">
         <div className="w-full h-full flex justify-center items-center sec-title text-white">
           My Applied Visa

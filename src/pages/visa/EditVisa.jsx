@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { apiUrl } from "../../hooks/useApiUrl";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
+import { Helmet } from "react-helmet-async";
 
 const visaRequirements = {
   "Student Visa": [
@@ -117,131 +118,136 @@ const EditVisa = () => {
     }
   };
   return (
-    <div className="container mt-10">
-      <div className="bg-white w-full md:w-3/4 mx-auto rounded-xl p-10">
-        <h1 className="sec-title text-center">Add visa</h1>
-        <form onSubmit={handleEditVisa} className="mt-10">
-          <div className="frm-grp-col">
-            <label htmlFor="countryName">Country Name</label>
-            <input
-              type="text"
-              name="countryName"
-              className="frm-ctr"
-              defaultValue={getVisaData.countryName}
-            />
-          </div>
-          <div className="frm-grp-col">
-            <label htmlFor="countryImg">Country Image</label>
-            <input
-              type="text"
-              name="countryImg"
-              className="frm-ctr"
-              defaultValue={getVisaData.countryImg}
-            />
-          </div>
-          <div className="frm-grp-col">
-            <label htmlFor="countryImg">Visa Type</label>
-            <select
-              name="visaType"
-              className="frm-ctr"
-              value={selectedVisa}
-              onChange={handleVisaChange}
-            >
-              <option value={getVisaData.visaType}>
-                {getVisaData.visaType}
-              </option>
-
-              {Object.keys(visaRequirements).map((visa) => (
-                <option key={visa} value={visa}>
-                  {visa}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="frm-grp-col">
-            <label htmlFor="processingTime">Processing Time</label>
-            <input
-              type="text"
-              name="processingTime"
-              className="frm-ctr"
-              defaultValue={getVisaData.processingTime}
-            />
-          </div>
-
-          <div className="flex flex-col md:flex-row">
-            <div className="flex items-center gap-3 w-full">
-              {selectedVisa && (
-                <div className="mt-4 p-5 border border-primary rounded-xl w-full">
-                  <h3 className="text-lg font-medium inline bg-white relative -top-9 px-5 ">
-                    Required Documents:
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {visaRequirements[selectedVisa].map((doc, index) => (
-                      <label key={index} className="flex gap-1 items-center">
-                        <input
-                          type="checkbox"
-                          value={doc}
-                          checked={selectedDocuments.includes(doc)}
-                          onChange={handleDocumentChange}
-                        />
-                        {doc}
-                      </label>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-          <div className="frm-grp-col mt-5">
-            <label htmlFor="description">Description</label>
-            <textarea
-              name="description"
-              className="frm-ctr"
-              rows={5}
-              defaultValue={getVisaData.description}
-            ></textarea>
-          </div>
-          <div className="flex flex-col gap-6 md:flex-row">
-            <div className="frm-grp-col w-full md:w-1/3">
-              <label htmlFor="ageRestriction">Age Requirement</label>
+    <>
+      <Helmet>
+        <title>Edit visa</title>
+      </Helmet>
+      <div className="container mt-10">
+        <div className="bg-white w-full md:w-3/4 mx-auto rounded-xl p-10">
+          <h1 className="sec-title text-center">Add visa</h1>
+          <form onSubmit={handleEditVisa} className="mt-10">
+            <div className="frm-grp-col">
+              <label htmlFor="countryName">Country Name</label>
               <input
                 type="text"
-                name="ageRestriction"
+                name="countryName"
                 className="frm-ctr"
-                defaultValue={getVisaData.ageRestriction}
+                defaultValue={getVisaData.countryName}
               />
             </div>
-            <div className="frm-grp-col w-full md:w-1/3">
-              <label htmlFor="fee">Fee</label>
+            <div className="frm-grp-col">
+              <label htmlFor="countryImg">Country Image</label>
               <input
-                type="number"
-                name="fee"
+                type="text"
+                name="countryImg"
                 className="frm-ctr"
-                defaultValue={getVisaData?.fee}
+                defaultValue={getVisaData.countryImg}
               />
             </div>
-            <div className="frm-grp-col w-full md:w-1/3">
-              <label htmlFor="validity">Validity Date</label>
-              <DatePicker
-                selected={getVisaData?.validity}
-                onChange={(date) => setStartDate(date)}
+            <div className="frm-grp-col">
+              <label htmlFor="countryImg">Visa Type</label>
+              <select
+                name="visaType"
                 className="frm-ctr"
+                value={selectedVisa}
+                onChange={handleVisaChange}
+              >
+                <option value={getVisaData.visaType}>
+                  {getVisaData.visaType}
+                </option>
+
+                {Object.keys(visaRequirements).map((visa) => (
+                  <option key={visa} value={visa}>
+                    {visa}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="frm-grp-col">
+              <label htmlFor="processingTime">Processing Time</label>
+              <input
+                type="text"
+                name="processingTime"
+                className="frm-ctr"
+                defaultValue={getVisaData.processingTime}
               />
             </div>
-          </div>
-          <div className="frm-grp-col mt-5">
-            <label htmlFor="applicationMethod">Application Method</label>
-            <textarea
-              name="applicationMethod"
-              className="frm-ctr"
-              rows={5}
-              defaultValue={getVisaData?.applicationMethod}
-            ></textarea>
-          </div>
-          <button className="btn w-full">Add Visa</button>
-        </form>
+
+            <div className="flex flex-col md:flex-row">
+              <div className="flex items-center gap-3 w-full">
+                {selectedVisa && (
+                  <div className="mt-4 p-5 border border-primary rounded-xl w-full">
+                    <h3 className="text-lg font-medium inline bg-white relative -top-9 px-5 ">
+                      Required Documents:
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {visaRequirements[selectedVisa].map((doc, index) => (
+                        <label key={index} className="flex gap-1 items-center">
+                          <input
+                            type="checkbox"
+                            value={doc}
+                            checked={selectedDocuments.includes(doc)}
+                            onChange={handleDocumentChange}
+                          />
+                          {doc}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className="frm-grp-col mt-5">
+              <label htmlFor="description">Description</label>
+              <textarea
+                name="description"
+                className="frm-ctr"
+                rows={5}
+                defaultValue={getVisaData.description}
+              ></textarea>
+            </div>
+            <div className="flex flex-col gap-6 md:flex-row">
+              <div className="frm-grp-col w-full md:w-1/3">
+                <label htmlFor="ageRestriction">Age Requirement</label>
+                <input
+                  type="text"
+                  name="ageRestriction"
+                  className="frm-ctr"
+                  defaultValue={getVisaData.ageRestriction}
+                />
+              </div>
+              <div className="frm-grp-col w-full md:w-1/3">
+                <label htmlFor="fee">Fee</label>
+                <input
+                  type="number"
+                  name="fee"
+                  className="frm-ctr"
+                  defaultValue={getVisaData?.fee}
+                />
+              </div>
+              <div className="frm-grp-col w-full md:w-1/3">
+                <label htmlFor="validity">Validity Date</label>
+                <DatePicker
+                  selected={getVisaData?.validity}
+                  onChange={(date) => setStartDate(date)}
+                  className="frm-ctr"
+                />
+              </div>
+            </div>
+            <div className="frm-grp-col mt-5">
+              <label htmlFor="applicationMethod">Application Method</label>
+              <textarea
+                name="applicationMethod"
+                className="frm-ctr"
+                rows={5}
+                defaultValue={getVisaData?.applicationMethod}
+              ></textarea>
+            </div>
+            <button className="btn w-full">Add Visa</button>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

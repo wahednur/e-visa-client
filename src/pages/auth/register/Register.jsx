@@ -85,7 +85,7 @@ const Register = () => {
   if (loading) return null;
   if (user?.email) return navigate("/");
   return (
-    <div className="center h-screen">
+    <div className="center min-h-[calc(100vh-350px)]">
       <div className="w-full md:w-xl p-8 rounded-2xl bg-white drop-shadow-xl">
         <h4 className="title mb-4">
           Welcome to <span className="text-primary">e.visa</span>
@@ -143,7 +143,7 @@ const Register = () => {
           <p className=" my-5 text-center">
             You have already account? please{" "}
             <Link to="/login" className="text-primary hover:text-secondary">
-              Register
+              Login
             </Link>
           </p>
         </div>
