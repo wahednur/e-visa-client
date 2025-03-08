@@ -37,7 +37,7 @@ const MyAppliedVisa = () => {
         </div>
       </div>
       <div className="container">
-        <div className="mt-10 mb-5">
+        <div className="mt-10 mb-5 py-5 bg-white dark:bg-gray-500">
           <input
             type="text"
             className="px-4 py-2 border border-gray-300 rounded-md"

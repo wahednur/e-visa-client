@@ -111,7 +111,7 @@ const HomePage = () => {
                 />
               </span>
             </h4>
-            <p className="text-text">
+            <p className="dark:text-gray-500 text-text ">
               There are many variations of passages of but the majority have in
               some form, by injected humou or words which don't look even
               slightly believable of but the majority have suffered majority

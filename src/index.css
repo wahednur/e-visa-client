@@ -26,7 +26,9 @@
   --roboto: "Roboto", sans-serif;
   --poppins: "Poppins", sans-serif;
 }
-
+.dark {
+  @apply dark:bg-gray-900;
+}
 .center {
   @apply flex justify-center items-center;
 }
@@ -35,8 +37,8 @@
 }
 
 body {
-  background: #f5f5f5;
   @apply font-roboto;
+  transition: all 0.3s, color 0.3s;
 }
 
 .desk-nav ul li a {

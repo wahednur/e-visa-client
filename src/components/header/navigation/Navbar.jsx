@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { FaBars } from "react-icons/fa6";
 import useAuth from "../../../hooks/useAuth";
 import { toast } from "sonner";
+import Theme from "../../theme/Theme";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [openMbl, setOpenMbl] = useState(false);
@@ -75,7 +76,8 @@ const Navbar = () => {
                 <ul className="flex items-center">{navLinks}</ul>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative flex items-center">
+              <Theme />
               <button
                 ref={buttonRef}
                 className="cursor-pointer"
